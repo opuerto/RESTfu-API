@@ -1,0 +1,33 @@
+1. Instalar laravel con COmposer
+
+c:\xampp\htdocs\>composer create-project laravel/laravel mercurioApp dev-develop
+
+2. Cambiar la clave en el archivo config app.php
+
+en el cmd escribir este comando. 
+
+c:\xampp\htdocs\RESTFULAPI>php artisan key:generate
+
+y copiamos el codigo en app.php en la linea numer 81
+
+'key' => env('APP_KEY', 'XwnfPDZqgFoTF6hhwDxsybHBgarGpFua'),
+
+3. configuracion o archivos de entorno . 
+
+que tiene datos sensibles como las contrasena de la base de datos. 
+
+creamos un archivo .env.local en la carpeta de nuestro proyecto 
+
+copiamos en el lo que hay en el archivo example . luego lo renombramos a .env 
+
+LA ESTRUCTURA -----
+
+Los modelos estan dentro de la carpeta APP 
+
+las vistas estan dentro de la carpeta resources y views 
+
+los controllers estan dentro de la carpte app/http/controllers
+
+Los Routes estan dentro de la carpet http 
+
+4. luego agregar nuestro repositorio a github 
