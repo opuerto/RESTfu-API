@@ -1,0 +1,26 @@
+MIGRACIONES 
+
+1 . Ir a la carpeta Restfulapi luego a la carpeta database y luego a migrations. 
+
+borrar los archivos que estan dentro de alli .
+
+2. creamos la base de datos en mysql 
+
+3. creamos la migraciones con este comando php artisan make:migration [nombre_archivo]_migration --create=nombre_de_la_tabla
+
+4. crear el archivo de migracion con sus tablas 
+
+          $table->increments('serie');
+            $table->string('color');
+            $table->float('cilindraje');
+            $table->integer('potencia');
+            $table->float('peso');
+            $table->integer('fabricante_id')->unsigned();
+            $table->foreign('fabricante_id')->references('id')->on('fabricantes');
+            $table->timestamps();
+
+5 . correr la migracion con artisan usando el comando php artisan migrate:install y esto crea la tabla migration luego para crear las tablas 
+escribimos php artisan migrate
+
+6. si tuvieramos un error y quisieramos desacer los cambios escribiriamos php artisan migrate:rollback
+
