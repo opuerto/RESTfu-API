@@ -24,3 +24,24 @@ escribimos php artisan migrate
 
 6. si tuvieramos un error y quisieramos desacer los cambios escribiriamos php artisan migrate:rollback
 
+
+INSERCION DE DATOS CON SEEDERS -------
+
+Abrimos el archivo en la carpeta seeds que se llama DatabaseSeeder.php comentamos la linea Model::unguard() y descomentamos la linea
+$this->call(); en la funcion run 
+
+2. Luego creamos las clases que estamos llamando adentro de la carpeta Seeds 
+
+instalar la dependencia faker para rellenar la data de prueba
+
+3. usar faker ejemplo  'color' =>$faker->safeColorName(), para llenar valores 
+
+4. correr el seed con el comando php artisan db:seed 
+
+si dice que la clase no existe correr el comando composer dumpautoload
+
+
+
+
+
+
