@@ -11,6 +11,7 @@
 |
 */
 
-Route::get('/','VehiculoController@showAll');
+
+Route::resource('vehiculos','VehiculoController', ['only'=>['index','show']]);
 Route::resource('fabricantes','FabricanteController');
-Route::resource('fabricantes.vehiculos','VehiculoController');
+Route::resource('fabricantes.vehiculos','FabricanteVehiculoController',['except' => ['show']]); //Recursos anidados por que esta relacionado vehiculo con fabricante
