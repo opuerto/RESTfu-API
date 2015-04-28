@@ -36,6 +36,7 @@ class FabricanteController extends Controller
     public function store()
     {
         //
+        return "posting a fabricante";
     }
 
     /**

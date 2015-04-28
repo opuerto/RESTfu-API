@@ -1,1 +1,7 @@
 con el comando php artisan make:controller NombreController
+
+rutas de prueba 
+
+http://restfulapi/fabricantes/7/vehiculos 
+
+returna los vehiculos que pertenecen a un fabricante en especifico
