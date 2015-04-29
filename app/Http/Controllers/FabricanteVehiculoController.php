@@ -102,9 +102,75 @@ class FabricanteVehiculoController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function update($idfabricante, $idvehiculo)
+    public function update(Request $request, $idfabricante, $idvehiculo)
     {
-        //
+         $color = $request->input('color');
+        $cilindraje = $request->input('cilindraje');
+        $potencia = $request->input('potencia');
+        $peso = $request->input('peso');
+        //averiguamos que metodos estamos usando 
+        $metodo = $request->method();
+        //validamos que exista un fabricante con el id enviado por la url
+
+        $fabricante = Fabricante::find($idfabricante);
+        if (!$fabricante) {
+            return response()->json(['mensaje'=>'No se encuentra este fabricante', 'codigo'=>404],404);   
+        }
+        //encontramos el vehiculo del fabricante 
+        $vehiculo = $fabricante->vehiculos()->find($idvehiculo);
+
+        if (!$vehiculo) {
+            return response()->json(['mensaje'=>'No se encuentra el vehiculo asociado a ese fabricante', 'codigo'=>404],404);   
+        }
+
+        if ($metodo === 'PATCH') {
+            //metodo patch podemos adquirir algunos de los valores del fabricante para hacer la actualizacion correspondiente
+            $bandera = false;
+            if ($color != null && $color != '') {
+                $vehiculo->color = $color;  
+                $bandera = true;  
+            }
+
+            if ($cilindraje != null && $cilindraje != '') {
+                $vehiculo->cilindraje = $cilindraje; 
+                $bandera = true; 
+            }
+
+             if ($potencia != null && $potencia != '') {
+                $vehiculo->potencia = $potencia; 
+                $bandera = true; 
+            }
+
+            if ($peso != null && $peso != '') {
+                $vehiculo->peso = $peso; 
+                $bandera = true; 
+            }
+
+            
+
+            if ($bandera) {
+                //bandera para asegurar de que no se enviaron todos los datos vacios
+                 $vehiculo->save();
+            
+                return response()->json(['mensaje' => 'Vehiculo modificado'],200);
+            }
+
+            return response()->json(['mensaje' => 'No se modifico ningun vehiculo'],304);
+           
+        }
+
+        //Con put actualiza el conjunto completo en teoria deberiamos requerir todos los datos 
+        //del fabricante para hacer una actualizacion 
+        if (!$color || !$potencia || !$cilindraje || !$peso) {
+             return response()->json(['mensaje' => 'No se pudieron procesar los valores','codigo' => 422],422);    
+        }
+
+          $vehiculo->color = $color; 
+          $vehiculo->cilindraje = $cilindraje;
+          $vehiculo->potencia = $potencia;
+          $vehiculo->peso = $peso;   
+          $vehiculo->save();
+          return response()->json(['mensaje' => 'vehiculo modificado'],200);
     }
 
     /**

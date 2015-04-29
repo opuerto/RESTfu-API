@@ -101,18 +101,24 @@ class FabricanteController extends Controller
         }
         if ($metodo === 'PATCH') {
             //metodo patch podemos adquirir algunos de los valores del fabricante para hacer la actualizacion correspondiente
-            
+            $bandera = false;
             if ($nombre != null && $nombre != '') {
-                $fabricante->nombre = $nombre;    
+                $fabricante->nombre = $nombre;  
+                $bandera = true;  
             }
 
             if ($telefono != null && $telefono != '') {
                 $fabricante->telefono = $telefono;  
+                $bandera = true;
             }
-
-            $fabricante->save();
+            if ($bandera) {
+               $fabricante->save();
             
             return response()->json(['mensaje' => 'Fabricante modificado'],200);
+            }
+            return response()->json(['mensaje' => 'No se modifico ningun fabricante'],304);
+
+            
         }
 
         //Con put actualiza el conjunto completo en teoria deberiamos requerir todos los datos 
