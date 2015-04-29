@@ -38,6 +38,10 @@ instalar la dependencia faker para rellenar la data de prueba
 
 4. correr el seed con el comando php artisan db:seed 
 
+un comando en los seed si cuando los corremos tenemos alguna error en uno de ellos podemos correr este comando despues de arreglar el error 
+
+php artisan migrate:refresh --seed
+
 si dice que la clase no existe correr el comando composer dumpautoload
 
 

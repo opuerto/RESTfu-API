@@ -7,11 +7,17 @@ use App\Fabricante;
 
 class FabricanteController extends Controller
 {
+     public function __construct() 
+    {
+        $this->middleware('auth.basic',['only' =>['store','update','destroy']]);
+    }
     /**
      * Display a listing of the resource.
      *
      * @return Response
      */
+
+
     public function index()
     {
 
@@ -33,10 +39,17 @@ class FabricanteController extends Controller
      *
      * @return Response
      */
-    public function store()
+    public function store(Request $request)
     {
         //
-        return "posting a fabricante";
+        if(!$request->input('nombre') || !$request->input('telefono'))
+        {
+             return response()->json(['mensaje' => 'No se pudieron procesar los valores','codigo' => 422],422);
+        }
+        Fabricante::create($request->all());
+        return response()->json(['mensaje' => 'Fabricante insertado'],201);
+        
+        
     }
 
     /**

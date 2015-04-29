@@ -11,6 +11,7 @@ class VehiculoController extends Controller
      *
      * @return Response
      */
+   
     public function index()
     {
         return response()->json(['datos'=>Vehiculo::all()],200);
