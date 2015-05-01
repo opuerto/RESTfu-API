@@ -13,5 +13,12 @@
 
 
 Route::resource('vehiculos','VehiculoController', ['only'=>['index','show']]);
-Route::resource('fabricantes','FabricanteController');
-Route::resource('fabricantes.vehiculos','FabricanteVehiculoController',['except' => ['show']]); //Recursos anidados por que esta relacionado vehiculo con fabricante
+Route::resource('fabricantes','FabricanteController', ['except'=>['edit','create']]);
+Route::resource('fabricantes.vehiculos','FabricanteVehiculoController',['except' => ['show','edit','create']]); //Recursos anidados por que esta relacionado vehiculo con fabricante
+
+//Evitar rutas inexistentes el siguiente codigo siempre tiene que estar al final del archivo
+Route::pattern('inexistentes','.*');
+
+Route::any('/{inexistentes}',function(){
+	return response()->json(['mensaje'=>'Rutas y o metodos incorrectos ', 'codigo'=>400],400);
+});

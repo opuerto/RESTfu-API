@@ -1,0 +1,18 @@
+******mejorar el mensaje si no esta autenticado. 
+
+Esto lo haremos atraves del middleware, ir a nuestro middleware OnceAuth
+
+*****Eliminacion de rutas innecesarias 
+
+En el archivo Route 
+
+escribimos except en un arreglo con la lista de los metodos
+
+***** Eliminar los metodos que sobran en los controles 
+
+
+***** Agregar error en rutas inexistentes 
+
+Ir al archivo de las rutas y agregar alli un patron ver Route
+
+

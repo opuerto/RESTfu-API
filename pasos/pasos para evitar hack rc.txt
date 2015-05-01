@@ -1,0 +1,15 @@
+una manera es ir al archivo .env y en la variable SESSION_DRIVER=file cambiar file por array quedaria asi 
+
+SESSION_DRIVER=array
+
+Otra forma es hacerlo por medio de un middleware 
+
+buscar el archivo AuthenticateWithBasicAuth y copiar todo lo de ese archivo y pegarlo en otro archivo uno nuevo
+creamos el archivo dentro de la carpeta middleware y lo nombramos OnceAuth.php
+
+modificamos el namespace y ponemos el nombre de la clase correcta
+
+luego vamos al kernel y en la propiedad protected $routeMiddleware agregamos en el arreglo el nuevo middleware con su ruta 
+
+y modificamos los controladores diciendole que ahora van a pasar por ese middleware 
+
