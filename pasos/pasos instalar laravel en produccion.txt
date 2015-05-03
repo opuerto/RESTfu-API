@@ -1,0 +1,39 @@
+vamos a nuestro vnc hasta la carpeta www y clonamos la direccion de nuestro repositorio en github https://github.com/opuerto/RESTfu-API.git
+
+
+Luego tenemos que modificar la raiz del servidor web para que vea nuestro proyecto 
+
+con el comando sudo nano /etc/nginx/sites-available/default modificamos el root 
+
+y reiniciamos el servicio 
+
+para que termine de funcionar debemos hacer unas configuraciones en nuestro servidor nginx entonces nos vamos a 
+
+sudo nano /etc/nginx/sites-available/default
+
+vamos i modificamos la linea que dice try_files $uri $uri/ =404 y la cambiamos por esto 
+
+try_files $uri $uri/ /index.php?$query_string;
+
+luego en la carpeta raiz de nuestra api escribimos el comando composer install pero antes asegurarnos que esta instalado 
+
+php5-mcryp y sino instalarlo con apt-get install php5-mcryp 
+
+luego habilitamos este componente porque no queda habilitado por defecto entonces escribimos 
+
+sudo php5enmod mcrypt 
+
+luego reiniciamos el servicio de php con sudo service php5-fpm restart
+
+luego tenemos que hacer una copia de nuestro archivo .env para configurar el entorno 
+
+para hacer esta copia usamos el comando sudo cp .env.example .env 
+
+abrimos el archivo .env con nano y borramos la primera linea APP_ENV=local luego la linea APP_DEBUG la pondremos en false 
+
+la llave APP_KEY vamos a escribir un valor aleatorio cualquiera como ASD234234csdfsdfsdf
+
+le llenamos los datos de la base de datos y cambiamos la variable SESSION_DRIVER=array
+
+ahora debemos crear la estructura de nuestra base de datos con las migraciones y los seeders 
+

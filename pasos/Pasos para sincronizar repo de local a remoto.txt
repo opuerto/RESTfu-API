@@ -1,0 +1,9 @@
+pasos para sincronizar de local a remoto 
+
+con ssh 
+
+1. copiamos la direccion de github git@github.com:opuerto/RESTfu-API.git
+
+2. abrimos github una vez abierta estamos en el repositorio creado y vamos a la tuerca y le damos en repository settings
+
+3 luego vamos a Remote y copiamos la direccion y vemos que aparece un boton Publish 
