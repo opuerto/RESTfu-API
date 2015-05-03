@@ -1,0 +1,13 @@
+1. instalar composer con esta linea curl -sS https://getcomposer.org/installer | php
+
+si nos pide php-cli lo instalamos con apt-get
+
+2. mover composer a la carpeta usr con el comando mv composer.phar usr/bin/composer
+
+3. despues instalamos git con sudo apt-get install git 
+
+4. configuramos git para que cuando hagamos comit al servidor remoto nos aparezca nuestro correo 
+
+5. escribimos comandos git config --global user.name "OscarPuerto"
+
+6. escribimos comando git config --global user.email "oscar.puertohn@gmail.com"

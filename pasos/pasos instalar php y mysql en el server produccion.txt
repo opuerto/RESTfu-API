@@ -1,0 +1,49 @@
+1. sudo apt-get install php5-fpm
+
+2. Luego tenemos que hacer una configuracion de segurida entonces vamos a la carpeta 
+
+/etc/php5/fpm/
+
+3. una vez alli hacemos sudo nano php.ini
+
+4. y alli debemos de buscar por medio de ctr+w algo que es cgi.fix
+
+5. hasta encontrar cgi.fix_pathifo=1 lo descomentamos y lo ponemos en igual a 0 para mejorar la seguridad
+
+
+6. luego vamos a la carpeta etc/php5/fpm/pool.d/
+
+7. sudo nano www.conf
+
+8. alli vamos a buscar una linea que dice listen = con ctr+w
+
+9. cuando la encontramos tenemos que corroborrar que diga listen=/var/run/php5-fpm.sock
+
+10 luego volvemos a la carpeta /etc/nginx/sites-available/
+
+11 y configuramos el documento default para las opciones php 
+
+12. descomentamos la linea location \.php${
+
+13. borramos la linea siguiente fastcgi_split_path_info bla bla bla presionando ctrl+k 
+
+14. descomentamos las lineas fastcgi_pass unix:/var/run/php-5.sock; y la linea fastcgi_index index.php y la linea include fastcgi_params;
+
+15. reiniciamos nginx sudo service nginx restart.
+
+16 . instalar mysql con sudo apt-get install mysql-server php5-mysql
+
+17. una vez instalado debemos instalar otra cosa para mejorar la seguridad con sudo mysql_install_db
+
+18. luego procedemos a llamar el asistente de configuracion para mejorar la seguridad vamos a la carpeta /usr/bin 
+
+19. una vez alli corremos sudo ./mysql_secure_installation
+
+20. luego procedemos a ejecutar mysql con el comando mysql -u root -p
+
+21. luego creamos la base de datos que vamos usar para la api con el comando create database apiudemi
+
+
+
+ 
+
