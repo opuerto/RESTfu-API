@@ -1,0 +1,69 @@
+creamos un servidor virtual en esta pagina 
+
+https://mmi-a.elastichosts.com
+
+bajamos el cliente en esta pagina 
+
+http://www.tightvnc.com/
+
+y lo instalamos
+
+alli nos conectamos al servidor por medio de vnc el programa que instalamos 
+
+ponemos la ip y password. 
+
+luego en la ventana escribimos root. 
+
+luego tenemos que crearle una contrasena al root 
+
+y crear un nuevo usuario para no estar trabajando directamente desde el root 
+
+nos logeamos siempre con el nuevo usuario 
+
+(investigar como se crea usuario y se pone contrasena a root en internet) 
+
+luego vamos a crear un dominio gratis en esta pagina. www.registry.cu.cc
+
+se llama oscarapi.cu.cc el dominio.
+
+despues volvemos a vcn y en la consola escribimos el comando 
+
+apt-get install nginx
+
+luego configuramos nginx con este comando 
+
+cd /etc/nginx/sites-available/ 
+
+despues por medio de nano modificamos el archivo que esta alli por default 
+
+y en la linea donde dice server modificamos root y escribimos /var/www;
+
+tiene que quedar asi root /var/www;
+
+y donde dice index agregamos el index.php
+
+y quedara index index.html index.htm index.php;
+
+y presionamos ctrl+x para salvar y salir 
+
+podemos cambiar los permisos de la carpeta con el comando chmod -R 777 cd /etc/nginx/sites-available/
+
+luego vamos a directorio atras y escribimos sudo nano nginx.conf
+alli vamos hasta la linea donde dice server_tokens off y le quitamos el # para descomentarlo asi evitamos que el browser muestre
+el tipo de servidor que estamos usando y el sistema operativo que son datos que no interesan al cliente 
+para guardar los cambios debemos reiniciar el servicio escribimos el comando 
+
+sudo service nginx reload
+
+volvemos al archivo default y descomentamos la parte que dice server y dentro de los {} escribimos 
+server_name 5.152.182.209;
+return 301 $scheme://oscarapi.cu.cc$request_uri;
+
+tambien alli en el archivo default ir mas abajo a la parte donde dice server_name localhost y poner nuestro dominio
+
+
+
+
+
+
+
