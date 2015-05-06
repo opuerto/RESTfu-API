@@ -37,3 +37,12 @@ le llenamos los datos de la base de datos y cambiamos la variable SESSION_DRIVER
 
 ahora debemos crear la estructura de nuestra base de datos con las migraciones y los seeders 
 
+php artisan migrate:install 
+
+php artisan migrate
+
+php artisan db:seed 
+
+Si queremos permitir acceso a nuestra api desde cualquier otro dominio tenemos que descomentar en el documento 
+default de nginx la linea que dice add_header Access-Control-Allow-Origin
+
