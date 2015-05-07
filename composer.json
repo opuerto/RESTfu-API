@@ -5,12 +5,15 @@
 	"license": "MIT",
 	"type": "project",
 	"require": {
-		"laravel/framework": "5.1.*",
+		"laravel/framework": "5.1.x-dev as 5.0.28",
+		"lucadegasperi/oauth2-server-laravel": "4.0.*@dev",
 		"fzaninotto/faker": "1.4.0"
+		
 	},
 	"require-dev": {
 		"phpunit/phpunit": "~4.0",
 		"phpspec/phpspec": "~2.1"
+
 	},
 	"autoload": {
 		"classmap": [

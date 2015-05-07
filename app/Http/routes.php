@@ -12,11 +12,15 @@
 */
 
 
-Route::group(array('prefix' => 'api/v1.1'),function(){
+Route::group(array('prefix' => 'api/v1.1','before' => 'oauth'),function(){
 	Route::resource('vehiculos','VehiculoController', ['only'=>['index','show']]);
 	Route::resource('fabricantes','FabricanteController', ['except'=>['edit','create']]);
 	Route::resource('fabricantes.vehiculos','FabricanteVehiculoController',['except' => ['show','edit','create']]); //Recursos anidados por que esta relacionado vehiculo con fabricante
 
+});
+
+Route::post('oauth/access_token', function() {
+    return Response::json(Authorizer::issueAccessToken());
 });
 
 //Evitar rutas inexistentes el siguiente codigo siempre tiene que estar al final del archivo
