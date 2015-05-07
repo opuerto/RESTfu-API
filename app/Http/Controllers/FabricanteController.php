@@ -4,12 +4,13 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Fabricante;
+use Illuminate\Support\Facades\Cache;
 
 class FabricanteController extends Controller
 {
      public function __construct() 
     {
-        $this->middleware('auth.basic.once',['only' =>['store','update','destroy']]);
+        //$this->middleware('auth.basic.once',['only' =>['store','update','destroy']]);
     }
     /**
      * Display a listing of the resource.
@@ -21,7 +22,10 @@ class FabricanteController extends Controller
     public function index()
     {
 
-        return response()->json(['datos'=>Fabricante::all()],200);
+        $fabricante = Cache::remember('fabricantes',1,function(){
+            return Fabricante::all();
+        });
+        return response()->json(['datos'=>$fabricante],200);
     }
 
    
